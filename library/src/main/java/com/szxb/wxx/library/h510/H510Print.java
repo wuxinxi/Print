@@ -1,5 +1,7 @@
 package com.szxb.wxx.library.h510;
 
+import android.graphics.Bitmap;
+
 import com.cloudpos.apidemo.jniinterface.PrinterInterface;
 
 import java.io.UnsupportedEncodingException;
@@ -16,7 +18,7 @@ import java.util.Set;
 public class H510Print {
 
 
-    public static  void Print(String title, Map<Object, Object> params) {
+    public static  void Print(String title, Map<Object, Object> params, Bitmap bitmap) {
         int resultP = PrinterInterface.PrinterOpen();
         if (resultP < 0) {
             return;
@@ -46,10 +48,24 @@ public class H510Print {
         Set<Object> key = params.keySet();
         for (Object value : key) {
             arryDatas = HexString2Bytes(sb(value + ":" + params.get(value)));
-            p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
+//            p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
             p.PrinterWrite(arryDatas, arryDatas.length);
             p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
         }
+
+        p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
+        byte[] sum;
+        sum=HexString2Bytes(sb("Sum:300.9$"));
+        p.PrinterWrite(ps.getCmdGs_N(1), ps.getCmdGs_N(1).length);
+        p.PrinterWrite(ps.getCmdEscAN(1), ps.getCmdEscAN(1).length);
+        p.PrinterWrite(sum,sum.length);
+        p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
+        p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
+        p.PrinterWrite(ps.getCmdEscAN(0), ps.getCmdEscAN(0).length);
+        p.PrinterWrite(ps.getCmdEscEN(0), ps.getCmdEscEN(0).length);
+
+        p.printBitmap(bitmap,0,0);
+        p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
         p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
         p.PrinterWrite(ps.getCmdLf(), ps.getCmdLf().length);
         PrinterInterface.PrinterEnd();

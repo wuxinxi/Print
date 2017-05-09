@@ -1,48 +1,48 @@
 package com.szxb.wxx;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.szxb.wxx.library.m680.M680Print;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.szxb.smart.pos.jni_interface.printer;
+import com.szxb.wxx.library.m680s.PrinterUtil;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button print;
+    private TextView textViewHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         print = (Button) findViewById(R.id.print);
+        textViewHide= (TextView) findViewById(R.id.textViewHide);
         print.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-//
-//
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
 
-                        Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+                        PrinterUtil myprinter = new PrinterUtil();
 
-                        map.put("交易时间", "2016-12-12");
-                        map.put("交易地点", "安徽亳州");
-                        map.put("交易气候", "晴朗");
-                        map.put("交易金额", "20161212");
-                        map.put("交易安好", "wq996489865");
+                        if (myprinter.PrinterOpen() < 0) {
+                            return;
+                        }
+                        textViewHide.setDrawingCacheEnabled(true);
+                        textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                                , View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                        textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
+                        Bitmap bitmap = textViewHide.getDrawingCache();
 
-//                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-//                        WizarPosPrint.Print("交易记录", map);
-                        M680Print.printours1();
-//                        H510Print.Print("交易记录", map);
-
+                        myprinter.printBitmap(bitmap, 0, 0);
+                        myprinter.PrinterWrite(printer.printSelf(), printer.printSelf().length);
+                        myprinter.PrinterClose();
 
                     }
                 }).start();
