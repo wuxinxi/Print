@@ -1,5 +1,5 @@
 # Print <br/>
-## <a href="">English</a>
+## <a href="https://github.com/wuxinxi/Print/blob/master/English.md">English</a>
 ## 导入方式 <br>
 1.导入library库即可 <br>
 ## M680使用方式
