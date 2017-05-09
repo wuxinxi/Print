@@ -1,5 +1,5 @@
 # Print <br/>
-## <a href="">中文</a>
+## <a href="https://github.com/wuxinxi/Print/edit/master/README.md">中文</a>
 ## Import mode<br>
 1.Import library Library <br>
 ## M680 Usage method
