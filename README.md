@@ -49,9 +49,22 @@ PrinterUtil print = new PrinterUtil();
 ```
 print.PrinterWrite(byte arryData[],int len);
 ```
-2.常规打印图片
+2.打印自测
+```
+printer.PrinterWrite(printer.printSelf(), printer.printSelf().length);
+```
+3.常规打印图片
 ```
 print.printBitmap(Bitmap bm, int bitMarginLeft, int bitMarginTop)
+```
+4.打印文字图片
+```
+textViewHide.setDrawingCacheEnabled(true);
+textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                                , View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
+                        Bitmap bitmap = textViewHide.getDrawingCache();
+myprinter.printBitmap(bitmap, 0, 0);
 ```
 3.详情请见PrinterUtil类
 ## H510使用方式
