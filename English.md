@@ -68,9 +68,10 @@ textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPEC
 textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
                         Bitmap bitmap = textViewHide.getDrawingCache();
 myprinter.printBitmap(bitmap, 0, 0);
-
+textViewHide.destroyDrawingCache();
 ```
 View translate picture： <br>
+view include:ScrollView、ListView、RecyclerView、GridView、ExpandableListView、TextView etc……
 ```
 public static Bitmap convertViewToBitmap(View view) {
         view.destroyDrawingCache();
