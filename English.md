@@ -58,13 +58,28 @@ printer.PrinterWrite(printer.printSelf(), printer.printSelf().length);
 print.printBitmap(Bitmap bm, int bitMarginLeft, int bitMarginTop)
 ```
 4.Print text in a picture
+
+TextView translate picture：<br>
 ```
+
 textViewHide.setDrawingCacheEnabled(true);
 textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
                                 , View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
 textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
                         Bitmap bitmap = textViewHide.getDrawingCache();
 myprinter.printBitmap(bitmap, 0, 0);
+
+```
+View translate picture： <br>
+```
+public static Bitmap convertViewToBitmap(View view) {
+        view.destroyDrawingCache();
+        view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+        view.setDrawingCacheEnabled(true);
+        return view.getDrawingCache(true);
+    }
 ```
 3.See the PrinterUtil class for details
 ## H510 Usage method
