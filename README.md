@@ -58,6 +58,12 @@ printer.PrinterWrite(printer.printSelf(), printer.printSelf().length);
 ```
 print.printBitmap(Bitmap bm, int bitMarginLeft, int bitMarginTop)
 ```
+4.按照国家来
+```
+<img src="https://raw.githubusercontent.com/wuxinxi/Print/master/img/img.png" /> <br/>
+
+  myprinter.PrinterType(byte b);
+```
 4.打印文字图片
 
 TextView转图片：<br>
