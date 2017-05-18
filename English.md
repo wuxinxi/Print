@@ -47,7 +47,7 @@ PrinterUtil print = new PrinterUtil();
 ```
 1.Conventional print text
 ```
-b={1,2,3,4,5,6,7}
+//b={1,2,3,4,5,6,7}
 print.PrinterType(byte b);
 print.PrinterWrite(byte arryData[],int len);
 ```
@@ -84,7 +84,7 @@ public static Bitmap convertViewToBitmap(View view) {
         return view.getDrawingCache(true);
     }
 ```
-5. prit mysele
+5. print self-test
 ```
   byte[] b = new byte[256];
   for (int i = 0; i < 256; i++) {
