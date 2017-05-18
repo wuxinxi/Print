@@ -47,6 +47,8 @@ PrinterUtil print = new PrinterUtil();
 ```
 1.Conventional print text
 ```
+b={1,2,3,4,5,6,7}
+print.PrinterType(byte b);
 print.PrinterWrite(byte arryData[],int len);
 ```
 2.Print self-test
@@ -81,6 +83,15 @@ public static Bitmap convertViewToBitmap(View view) {
         view.setDrawingCacheEnabled(true);
         return view.getDrawingCache(true);
     }
+```
+5. prit mysele
+```
+  byte[] b = new byte[256];
+  for (int i = 0; i < 256; i++) {
+      b[i] = (byte) i;
+      }
+  printer.PrinterType((byte) 5);
+  printer.PrinterWrite(b, b.length);
 ```
 3.See the PrinterUtil class for details
 ## H510 Usage method
