@@ -14,9 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:textSize="30sp"
+        android:textSize="50sp"
+        android:singleLine="false"
         android:textStyle="bold"
-        android:text="inte bara att skriva kod."
+        android:text="
+- regn rytmen våren kvar en hel mening, fortfarande utan att ge upp, med en ganska till säsonger i sommar.regn, regn, alltid har en vidsträckt himmel, vilket gör att det är cool ytlig sommaren under regn och dimma - - går långsamt.
+"
         android:id="@+id/textViewHide"/>
     <Button
         android:id="@+id/print"

@@ -20,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         print = (Button) findViewById(R.id.print);
-        textViewHide= (TextView) findViewById(R.id.textViewHide);
+        textViewHide = (TextView) findViewById(R.id.textViewHide);
         print.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                textViewHide.setSingleLine(false);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -34,14 +34,16 @@ public class MainActivity extends AppCompatActivity {
                         if (myprinter.PrinterOpen() < 0) {
                             return;
                         }
+
                         textViewHide.setDrawingCacheEnabled(true);
                         textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
                                 , View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
                         textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
                         Bitmap bitmap = textViewHide.getDrawingCache();
-
+                        textViewHide.destroyDrawingCache();
                         myprinter.printBitmap(bitmap, 0, 0);
-                        myprinter.PrinterWrite(printer.printSelf(), printer.printSelf().length);
+
+//                        myprinter.PrinterWrite(printer.printSelf(), printer.printSelf().length);
                         myprinter.PrinterClose();
 
                     }
