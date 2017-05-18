@@ -71,7 +71,7 @@ textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasu
 myprinter.printBitmap(bitmap, 0, 0);
 
 ```
-View转图片： <br>
+View转图片：支持：ScrollView、ListView、RecyclerView、TextView 等等<br>
 ```
 public static Bitmap convertViewToBitmap(View view) {
         view.destroyDrawingCache();
