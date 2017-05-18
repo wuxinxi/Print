@@ -51,16 +51,24 @@ public class Main extends AppCompatActivity {
                         if (myprinter.PrinterOpen() < 0) {
                             return;
                         }
-                        byte[] b = null;
-                        try {
-                            b = ("hem, ordet har någon form av magi som får du alltid med henne, kan" +
-                                    " jag inte ge något exakt definition endast genom några enkla uttryck " +
-                                    "för att beskriva en ritning.").getBytes("UTF-8");
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
+                        byte[] b = new byte[256];
+
+                        for (int i = 0; i < 256; i++) {
+                            b[i] = (byte) i;
                         }
+
+
+//                        try {
+//                            b = ("hem, ordet har någon form av magi som får du alltid med henne, kan" +
+//                                    " jag inte ge något exakt definition endast genom några enkla uttryck " +
+//                                    "för att beskriva en ritning.").getBytes("UTF-8");
+//                        } catch (UnsupportedEncodingException e) {
+//                            e.printStackTrace();
+//                        }
+
                         myprinter.PrinterType((byte) 5);
 //                        myprinter.PrinterWrite(myprinter.printSelf(), myprinter.printSelf().length);
+
                         myprinter.PrinterWrite(b, b.length);
 //                        myprinter.printBitmap(bitmap, 0, 0);
                         myprinter.PrinterClose();
