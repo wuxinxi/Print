@@ -1,5 +1,5 @@
 # Print <br/>
-## <a href="">English</a>
+## <a href="https://github.com/wuxinxi/Print/blob/master/English.md">English</a>
 ## 导入方式 <br>
 1.导入library库即可 <br>
 ## M680使用方式
@@ -59,13 +59,28 @@ printer.PrinterWrite(printer.printSelf(), printer.printSelf().length);
 print.printBitmap(Bitmap bm, int bitMarginLeft, int bitMarginTop)
 ```
 4.打印文字图片
+
+TextView转图片：<br>
 ```
+
 textViewHide.setDrawingCacheEnabled(true);
 textViewHide.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
                                 , View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
 textViewHide.layout(0, 0, textViewHide.getMeasuredWidth(), textViewHide.getMeasuredHeight());
                         Bitmap bitmap = textViewHide.getDrawingCache();
 myprinter.printBitmap(bitmap, 0, 0);
+
+```
+View转图片：支持：ScrollView、ListView、RecyclerView、TextView 等等<br>
+```
+public static Bitmap convertViewToBitmap(View view) {
+        view.destroyDrawingCache();
+        view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+        view.setDrawingCacheEnabled(true);
+        return view.getDrawingCache(true);
+    }
 ```
 3.详情请见PrinterUtil类
 ## H510使用方式
