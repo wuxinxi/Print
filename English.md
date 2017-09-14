@@ -28,15 +28,15 @@ print.center(int i) ;
 ```
 print.width(int i);
 ```
-6.Underline(i=1 is i=0 no)
+6.Underline(i=1 yes i=0 no)
 ```
 print.underline(int i);
 ```
-7.Inverse(i=1 is i=0 no)
+7.Inverse(i=1 yes i=0 no)
 ```
 print.inverse(int i);
 ```
-8.Reverse(i=1 is i=0 no)
+8.Reverse(i=1 yess i=0 no)
 ```
 print.reverse(int i);
 ```
