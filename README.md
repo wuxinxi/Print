@@ -59,7 +59,7 @@ printer.PrinterWrite(printer.printSelf(), printer.printSelf().length);
 print.printBitmap(Bitmap bm, int bitMarginLeft, int bitMarginTop)
 ```
 4.按照国家来<br>
-<img src="http://img.027cgb.cn/20170504/2017518631372323792.png" /> <br/>
+
 ```
   myprinter.PrinterType(byte b);
 ```
